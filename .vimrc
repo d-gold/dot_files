@@ -247,7 +247,7 @@ NeoBundle 'sheerun/vim-polyglot'
 
 " Bash {{{
 
-NeoBundle 'vim-scripts/bash-support.vim' " BASH IDE -- Write and run BASH-scripts using menus and hotkeys.
+" NeoBundle 'vim-scripts/bash-support.vim' " BASH IDE -- Write and run BASH-scripts using menus and hotkeys.
 
 " }}}
 
@@ -257,11 +257,33 @@ NeoBundle 'vim-scripts/c.vim'
 
 " }}}
 
+" Chef {{{ 
+
+NeoBundle 'vadv/vim-chef' " Vim plugins for chef
+
+" }}} 
+
 " CSV {{{
 
 NeoBundle 'vim-scripts/csv.vim' " A Filetype plugin for csv files.
 
 " }}}
+
+" Java {{{
+
+NeoBundle 'Better-Javascript-Indentation' " 1.0.0 Vastly improved javascript indentation
+NeoBundle 'java.vim' " 1.0   Convenience mappings for Java programming
+NeoBundle 'java_apidoc.vim' " 1.0   Java API documentation viewer (JavaDoc)
+NeoBundle 'javacomplete' " 0.71  Omni Completion for JAVA
+NeoBundle 'javaimp.vim' " 0.1   Open a Java source file from its import statement
+NeoBundle 'vim-scripts/javalog.vim' " syntax highlighting for default java.util.logging output
+NeoBundle 'mbedna/vjava' " Vim plugin used to compile java code based on syntastic.
+NeoBundle 'JavaBrowser' " 1.11  Shows java file class, package in a tree as in IDEs. Java source browser.
+NeoBundle 'InsertTry.vim' " 0.1   put java's try catch around marked lines
+NeoBundle 'java_fold' " 1.0   Folding expression for Java
+NeoBundle 'vim-scripts/java_getset.vim' " Automatically add getter/setters for Java properties (including array-based)
+
+" }}} 
 
 " Go {{{
 
@@ -270,12 +292,21 @@ NeoBundle 'vim-scripts/csv.vim' " A Filetype plugin for csv files.
 
 " }}}
 
+" Groovy {{{
+"
+NeoBundle 'vim-scripts/groovyindent' " groovy indent script
+NeoBundle 'vim-scripts/groovy.vim' " syntax file for the groovy programming language
+NeoBundle 'vim-scripts/groovy.vim--Ruley' " Runs or compiles Groovy scripts.
+
+" }}} 
+
 " Haskell {{{
 
 NeoBundle 'vim-scripts/haskell.vim' " Syntax file for Haskell
 NeoBundle 'vim-scripts/haskellFold' " Provide a foldexpr function which give nice folding for haskell files.
 NeoBundle 'vim-scripts/indenthaskell.vim' " Haskell indent file
 NeoBundle 'aniederl/haskellmode-vim' " git mirror of http://code.haskell.org/haskellmode-vim
+NeoBundle 'Twinside/vim-haskellConceal' " Conceal operator for haskell
 
 " }}}
 
@@ -294,6 +325,18 @@ NeoBundle 'vim-scripts/slimv.vim'
 
 " }}}
 
+" Markup/down {{{ 
+
+NeoBundle 'confluencewiki.vim' " 0.0.1 Confluence WIKI syntax
+"NeoBundle 'gabrielelana/vim-markdown' " Markdown for Vim: a complete environment to create Markdown files with a syntax highlight that don't sucks!
+"NeoBundle 'hallison/vim-markdown' 
+NeoBundle 'tpope/vim-markdown' " Vim Markdown runtime files
+NeoBundle 'nelstrom/vim-markdown-folding' " Fold markdown documents by section.
+
+NeoBundle 'vim-scripts/instant-markdown.vim' " Real-time Markdown previews from Vim!
+
+" }}}
+
 " PHP {{{
 
 NeoBundle 'arnaud-lb/vim-php-namespace'
@@ -307,6 +350,7 @@ NeoBundleLazy 'klen/python-mode', {'autoload': {'filetypes': ['python']}}
 NeoBundle 'jmcantrell/vim-virtualenv'
 NeoBundle 'vim-scripts/python_match.vim' " Extend the % motion and define g%, [%, and ]% motions for Python files
 NeoBundle 'vim-scripts/python_open_module' " open the python module file below the cursor when coding python
+NeoBundle 'laurentb/vim-cute-php' " Unicode goodness for PHP code by using vim's “conceal” feature - shamelessly taken from vim-cute-python
 
 " }}}
 
@@ -323,9 +367,22 @@ NeoBundle "thoughtbot/vim-rspec"
 
 NeoBundle 'txt.vim' " 1.0   Universal syntax script for all txt docs, logs and other types
 
+NeoBundle 'kana/vim-textobj-entire' " ae, ie
+NeoBundle 'kana/vim-textobj-indent' " ai, ii, aI, iI
+NeoBundle 'kana/vim-textobj-lastpat' " a/, i/, a?, i?
+NeoBundle 'kana/vim-textobj-line' " al, il
+NeoBundle 'kana/vim-textobj-underscore' " a_, i_
+NeoBundle 'kana/vim-textobj-user'
+
 " }}}
 
 " }}}
+
+" Marks {{{ 
+
+NeoBundle 'kshenoy/vim-signature'
+
+" }}} 
 
 " Menuing {{{
 
@@ -363,6 +420,12 @@ NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'terryma/vim-multiple-cursors'
 
 " }}}
+
+" Names {{{
+
+" NeoBundle 'operator-camelize' " 0.0.0 snake_case -> SnakeCase, CamelCase -> camel_case
+
+" }}} 
 
 " Outlining {{{
 
@@ -456,6 +519,10 @@ NeoBundle 'inform.vim' " 0.5   Indenting for Inform
 " Tagging {{{
 
 NeoBundle 'majutsushi/tagbar' " Vim plugin that displays tags in a window, ordered by class etc.
+NeoBundle 'xolox/vim-easytags' " Automated tag file generation and syntax highlighting of tags in Vim
+" NeoBundle 'craigemery/vim-autotag' " 1.0   Updates entries in a tags file automatically when saving
+" NeoBundle 'szw/vim-tags'
+" NeoBundle 'OmniTags' " 0.1   This plugin can help you to maintenance tags file.
 
 " }}}
 
@@ -557,6 +624,18 @@ let g:ctrlp_open_new_file = 'r'
 
 " }}}
 
+" EasyTags {{{
+
+let g:easytags_async = 1
+" let g:easytags_dynamic_files = 1
+let g:easytags_by_filetype = "~/.vim/tags/"
+" let g:easytags_syntax_keyword = 'always'
+" let g:easytags_on_cursorhold = 0
+let g:easytags_auto_highlight = 0
+
+
+" }}} 
+
 " Jedi {{{
 
 let g:jedi#popup_on_dot = 0
@@ -650,6 +729,23 @@ let g:syntastic_aggregate_errors = 1
 let g:syntastic_phpcs_conf = "--standard=/home/gold/dev/dg/phpcs/CodeSniffer/Standards/dg/ruleset.xml"
 let g:syntastic_python_checkers=['python', 'pylint']
 
+"Syntastic
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_mode_map = { 'mode': 'passive',
+"                                \ 'passive_filetypes': ['groovy'] }
+"                                "\ 'active_filetypes': ['javascript', 'html', 'css'],
+
+" let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-", "invalid value \"{{"]
+
+let g:syntastic_groovy_checkers = ['codenarc']
+
+" "map <Leader>c :SyntasticCheck<CR>
+
+" let g:syntastic_always_populate_loc_list=1
+
+
+
+
 " }}}
 
 " Tagbar {{{
@@ -680,9 +776,25 @@ let g:tagbar_type_ruby = {
 \ }
 
 
+let g:tagbar_type_groovy = {
+    \ 'ctagstype' : 'groovy',
+    \ 'kinds'     : [
+        \ 'p:package',
+        \ 'c:class',
+        \ 'i:interface',
+        \ 'f:function',
+        \ 'v:variables',
+    \ ]
+\ }
 
 
 " }}}
+
+" Tags {{{ 
+
+let g:vim_tags_auto_generate = 1
+
+" }}} 
 
 " UtilSnips {{{
 
@@ -942,7 +1054,10 @@ set colorcolumn=81,133
 " }}}
 
 " Tags {{{
-set tags="./tags,~/.vim/tags/
+
+"set tags="./tags,~/.vim/tags/
+set tags=./tags,tags,~/.vim/tags/tags
+
 " }}}
 
 " Timeouts {{{
@@ -1378,6 +1493,7 @@ autocmd VimEnter *
             \   NERDTree |
             \   execute "normal \<c-w>w" |
             \ endif
+
 " }}}
 
 " Events {{{ ==================================================================
