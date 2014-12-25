@@ -307,8 +307,8 @@ NeoBundle 'vim-scripts/java_getset.vim' " Automatically add getter/setters for J
 " Groovy {{{
 "
 NeoBundle 'vim-scripts/groovyindent' " groovy indent script
-NeoBundle 'vim-scripts/groovy.vim' " syntax file for the groovy programming language
 NeoBundle 'vim-scripts/groovy.vim--Ruley' " Runs or compiles Groovy scripts.
+NeoBundle 'rdolgushin/groovy.vim' " Fixed Groovy syntax plugin for Vim 7.4
 
 " }}} 
 
@@ -813,16 +813,18 @@ let g:tagbar_type_ruby = {
     \ ]
 \ }
 
-
 let g:tagbar_type_groovy = {
     \ 'ctagstype' : 'groovy',
     \ 'kinds'     : [
-        \ 'p:package',
-        \ 'c:class',
-        \ 'i:interface',
-        \ 'f:function',
-        \ 'v:variables',
-    \ ]
+        \ 'p:packages:0:1',
+        \ 'g:enums:0:1',
+        \ 'i:interfaces:0:1',
+        \ 'c:classes:0:1',
+        \ 'f:functions:0:1',
+        \ 'm:member variables:0:1',
+        \ 'v:variables:0:1',
+    \ ],
+    \ 'sro'        : '.'
 \ }
 
 
