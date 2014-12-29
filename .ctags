@@ -1,0 +1,19 @@
+--langdef=groovy
+--langmap=groovy:.groovy
+--regex-groovy=/^[ \t]*(final[ \t]+|static[ \t]+|private[ \t]+|public[ \t]+|protected[ \t]+)*class[ \t]+([_A-Za-z0-9]+([<].*[>])?[ \t]+[^{]*)[{][ \t]*$/\1 \2: class/c,class,classes/
+--regex-groovy=/^[ \t]*(private[ \t]+|public[ \t]+|protected[ \t]+)+enum[ \t]+([_A-Za-z0-9]+)[ \t]+[{][ \t]*$/\2/g,enum,enums/
+--regex-groovy=/^[ \t]*enum[ \t]+([_A-Za-z0-9]+)[ \t]+[{][ \t]*$/\1/g,enum,enums/
+--regex-groovy=/^[ \t]*([_A-Za-z0-9]+[(]([_A-Za-z][<?>A-Za-z0-9]*[ \t][, <?>A-Za-z0-9]+)*[)])[ \t]*[{,].*$/\1/C,constructor,constructors/
+--regex-groovy=/^[ \t]*(static[ \t]+|private[ \t]+|public[ \t]+|protected[ \t]+)*([_A-Za-z][, _A-Za-z0-9<?>]*)[ \t]+([_A-Za-z0-9]+[(][ ,<?>A-Za-z0-9]*[)])[ \t]*[{,].*$/\3 : \2/f,function,functions/
+--regex-groovy=/^[ \t]*def[ \t]+([_a-zA-Z0-9]+)[ \t]+=[ \t]+[{].*$/\1/f,function,functions/
+--regex-groovy=/^[ \t]*def[ \t]+([_a-zA-Z0-9]+)[ \t]+=[ \t]+[^{].*$/\1/v,variable,variables/
+--regex-groovy=/^[ \t]*(private[ \t]+|public[ \t]+|protected[ \t]+|static[ \t]+)+([, <>?_A-Za-z0-9]+)[ \t]+([_A-Za-z0-9]+)([ \t]*=[ \t]*.*)?[ \t]*$/\3 : \2/m,property,properties/
+--regex-groovy=/^[ \t]*(private[ \t]+|public[ \t]+|protected[ \t]+|static[ \t]+)+final[ \t]+([, <>?_A-Za-z0-9]+)[ \t]+([_A-Za-z0-9]+)([ \t]*=[ \t]*.*)?[ \t]*$/\3 : \2/m,property,properties/
+--regex-groovy=/^[ \t]*final[ \t]+([, <>?_A-Za-z0-9]+)[ \t]+([_A-Za-z0-9]+)([ \t]*=[ \t]*.*)?[ \t]*$/\2 : \1/m,property,properties/
+--regex-groovy=/^[ \t]*final[ \t]+(private[ \t]+|public[ \t]+|protected[ \t]+|static[ \t]+)+([, <>?_A-Za-z0-9]+)[ \t]+([_A-Za-z0-9]+)([ \t]*=[ \t]*.*)?[ \t]*$/\3 : \2/m,property,properties/
+--regex-groovy=/^[ \t]*package[ \t]+([._A-Za-z0-9]+)[ \t]*$/\1/p,package,packages/
+--regex-groovy=/^[ \t]*import[ \t]+([*._A-Za-z0-9]+)([ \t]as[ \t][_A-Za-z0-9]+)?[ \t]*$/\1/I,import,imports/
+--regex-groovy=/^[ \t]*import[ \t]static[ \t]+([*._A-Za-z0-9]+)([ \t]as[ \t][_A-Za-z0-9]+)?[ \t]*$/\1/I,import,imports/
+--regex-groovy=/^[ \t]*(public|protected|private)[ \t][@]?interface[ \t]+([,<>_A-Za-z0-9]+)[ \t]+[{]([ \t]?[}])?[ \t]*$/\2/i,interface,interfaces/
+--regex-groovy=/^[ \t]*[@]?interface[ \t]+([,<>_A-Za-z0-9]+)[ \t]+[{]([ \t]?[}])?[ \t]*$/\1/i,interface,interfaces/
+
