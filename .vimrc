@@ -720,7 +720,7 @@ let NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
 let NERDTreeShowBookmarks=1
 let g:nerdtree_tabs_focus_on_files=1
 let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
-let g:NERDTreeWinSize = 20
+let g:NERDTreeWinSize = 40
 
 " }}}
 
@@ -817,9 +817,11 @@ let g:tagbar_type_groovy = {
     \ 'ctagstype' : 'groovy',
     \ 'kinds'     : [
         \ 'p:packages:0:1',
+        \ 'I:imports:1:1',
         \ 'g:enums:0:1',
         \ 'i:interfaces:0:1',
         \ 'c:classes:0:1',
+        \ 'C:constructors:0:1',
         \ 'f:functions:0:1',
         \ 'm:member variables:0:1',
         \ 'v:variables:0:1',
