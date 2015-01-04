@@ -858,6 +858,10 @@ set complete=.,w,b,u,k,s,t,i
 
 " }}}
 
+" Conceal {{{
+set concealcursor=nvc
+" }}}
+
 " Dictionary {{{
 
 set dictionary=/usr/share/dict/words
