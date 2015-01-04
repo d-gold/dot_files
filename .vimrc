@@ -33,7 +33,9 @@ endif
 if has('vim_starting')
     set rtp+=$HOME/.vim/bundle/neobundle.vim/
 endif
-call neobundle#rc(expand($HOME.'/.vim/bundle/'))
+" call neobundle#rc(expand($HOME.'/.vim/bundle/'))
+call neobundle#begin(expand($HOME.'/.vim/bundle/'))
+call neobundle#end()
 
 " is better if NeoBundle rules NeoBundle (needed!)
 NeoBundle 'Shougo/neobundle.vim'
@@ -72,6 +74,12 @@ NeoBundle 'pluginbackup.vim' " 1.0   Numbered Backups.
 " Browsers and the like {{{
 NeoBundle 'scrooloose/nerdtree' " A tree explorer plugin for vim.
 NeoBundle 'bufexplorer.zip' " 6.0.2 Buffer Explorer / Browser
+
+" }}}
+
+" Calendar {{{
+
+NeoBundle 'itchyny/calendar.vim' " A calendar application for Vim
 
 " }}}
 
@@ -245,7 +253,7 @@ NeoBundle 'sheerun/vim-polyglot'
 
 " Bash {{{
 
-NeoBundle 'vim-scripts/bash-support.vim' " BASH IDE -- Write and run BASH-scripts using menus and hotkeys.
+" NeoBundle 'vim-scripts/bash-support.vim' " BASH IDE -- Write and run BASH-scripts using menus and hotkeys.
 
 " }}}
 
@@ -255,9 +263,37 @@ NeoBundle 'vim-scripts/c.vim'
 
 " }}}
 
+" Chef {{{
+
+NeoBundle 'vadv/vim-chef' " Vim plugins for chef
+
+" }}}
+
 " CSV {{{
 
 NeoBundle 'vim-scripts/csv.vim' " A Filetype plugin for csv files.
+
+" }}}
+
+" Elixir {{{
+
+NeoBundle 'elixir-lang/vim-elixir' " Vim configuration files for Elixir
+
+" }}}
+
+" Java {{{
+
+NeoBundle 'Better-Javascript-Indentation' " 1.0.0 Vastly improved javascript indentation
+NeoBundle 'java.vim' " 1.0   Convenience mappings for Java programming
+NeoBundle 'java_apidoc.vim' " 1.0   Java API documentation viewer (JavaDoc)
+NeoBundle 'javacomplete' " 0.71  Omni Completion for JAVA
+NeoBundle 'javaimp.vim' " 0.1   Open a Java source file from its import statement
+NeoBundle 'vim-scripts/javalog.vim' " syntax highlighting for default java.util.logging output
+NeoBundle 'mbedna/vjava' " Vim plugin used to compile java code based on syntastic.
+NeoBundle 'JavaBrowser' " 1.11  Shows java file class, package in a tree as in IDEs. Java source browser.
+NeoBundle 'InsertTry.vim' " 0.1   put java's try catch around marked lines
+NeoBundle 'java_fold' " 1.0   Folding expression for Java
+NeoBundle 'vim-scripts/java_getset.vim' " Automatically add getter/setters for Java properties (including array-based)
 
 " }}}
 
@@ -268,12 +304,21 @@ NeoBundle 'vim-scripts/csv.vim' " A Filetype plugin for csv files.
 
 " }}}
 
+" Groovy {{{
+"
+NeoBundle 'vim-scripts/groovyindent' " groovy indent script
+NeoBundle 'vim-scripts/groovy.vim--Ruley' " Runs or compiles Groovy scripts.
+NeoBundle 'rdolgushin/groovy.vim' " Fixed Groovy syntax plugin for Vim 7.4
+
+" }}}
+
 " Haskell {{{
 
 NeoBundle 'vim-scripts/haskell.vim' " Syntax file for Haskell
 NeoBundle 'vim-scripts/haskellFold' " Provide a foldexpr function which give nice folding for haskell files.
 NeoBundle 'vim-scripts/indenthaskell.vim' " Haskell indent file
 NeoBundle 'aniederl/haskellmode-vim' " git mirror of http://code.haskell.org/haskellmode-vim
+NeoBundle 'enomsg/Vim-HaskellConcealPlus' " Conceal operator for haskell
 
 " }}}
 
@@ -292,9 +337,27 @@ NeoBundle 'vim-scripts/slimv.vim'
 
 " }}}
 
+" Markup/down {{{
+
+NeoBundle 'confluencewiki.vim' " 0.0.1 Confluence WIKI syntax
+"NeoBundle 'gabrielelana/vim-markdown' " Markdown for Vim: a complete environment to create Markdown files with a syntax highlight that don't sucks!
+"NeoBundle 'hallison/vim-markdown'
+NeoBundle 'tpope/vim-markdown' " Vim Markdown runtime files
+NeoBundle 'nelstrom/vim-markdown-folding' " Fold markdown documents by section.
+
+NeoBundle 'vim-scripts/instant-markdown.vim' " Real-time Markdown previews from Vim!
+
+" }}}
+
 " PHP {{{
 
 NeoBundle 'arnaud-lb/vim-php-namespace'
+
+" }}}
+
+" PHP {{{
+
+NeoBundle 'laurentb/vim-cute-php' " Unicode goodness for PHP code by using vim's “conceal” feature - shamelessly taken from vim-cute-python
 
 " }}}
 
@@ -305,6 +368,7 @@ NeoBundleLazy 'klen/python-mode', {'autoload': {'filetypes': ['python']}}
 NeoBundle 'jmcantrell/vim-virtualenv'
 NeoBundle 'vim-scripts/python_match.vim' " Extend the % motion and define g%, [%, and ]% motions for Python files
 NeoBundle 'vim-scripts/python_open_module' " open the python module file below the cursor when coding python
+NeoBundle 'ehamberg/vim-cute-python'
 
 " }}}
 
@@ -321,7 +385,20 @@ NeoBundle "thoughtbot/vim-rspec"
 
 NeoBundle 'txt.vim' " 1.0   Universal syntax script for all txt docs, logs and other types
 
+NeoBundle 'kana/vim-textobj-entire' " ae, ie
+NeoBundle 'kana/vim-textobj-indent' " ai, ii, aI, iI
+NeoBundle 'kana/vim-textobj-lastpat' " a/, i/, a?, i?
+NeoBundle 'kana/vim-textobj-line' " al, il
+NeoBundle 'kana/vim-textobj-underscore' " a_, i_
+NeoBundle 'kana/vim-textobj-user'
+
 " }}}
+
+" }}}
+
+" Marks {{{
+
+NeoBundle 'kshenoy/vim-signature'
 
 " }}}
 
@@ -347,6 +424,20 @@ NeoBundleLazy 'osyo-manga/unite-quickfix', {'autoload':{'unite_sources':
             \ ['quickfix', 'location_list']}}
 NeoBundleLazy 'osyo-manga/unite-fold', {'autoload':{'unite_sources':'fold'}}
 NeoBundleLazy 'tacroe/unite-mark', {'autoload':{'unite_sources':'mark'}}
+NeoBundle 'thinca/vim-unite-history' " A source of unite.vim for history of command/search.
+NeoBundle 'farseer90718/unite-workflow' " unite.vim extentions for convenience similar to alfred-workflow
+NeoBundle 'unite-gem' " 1.0   A Unite.vim plugin to search/install RubyGems packages easily, using gem command
+NeoBundle 'ujihisa/unite-haskellimport' " :Unite haskellimport
+NeoBundle 'thinca/vim-unite-history' " A source of unite.vim for history of command/search.
+NeoBundle 'Shougo/unite-sudo' " sudo source for unite.vim
+NeoBundle 'moznion/unite-git-conflict.vim' " Unite source for git conflicts.
+NeoBundle 'kickstamp/unite-ghcExtension' " unite source for ghc extensions
+"NeoBundle 'kamichidu/vim-unite-javaimport' " unite source to add import statements of java easily.
+NeoBundle 'itchyny/unite-preview' " A preview plugin for vimfiler, unite
+NeoBundle 'eagletmt/unite-haddock' " unite.vim source for haddock
+NeoBundle 'dameninngenn/unite-perldoc' " perldoc for unite
+NeoBundle 'ujihisa/unite-launch' " Launch external commands and persist the results
+NeoBundle 'Shougo/unite-build' " Build by unite interface
 
 " }}}
 
@@ -359,6 +450,12 @@ NeoBundle 'Shougo/neomru.vim'
 " Multiple Cursors {{{
 
 NeoBundle 'terryma/vim-multiple-cursors'
+
+" }}}
+
+" Names {{{
+
+" NeoBundle 'operator-camelize' " 0.0.0 snake_case -> SnakeCase, CamelCase -> camel_case
 
 " }}}
 
@@ -454,6 +551,10 @@ NeoBundle 'inform.vim' " 0.5   Indenting for Inform
 " Tagging {{{
 
 NeoBundle 'majutsushi/tagbar' " Vim plugin that displays tags in a window, ordered by class etc.
+NeoBundle 'xolox/vim-easytags' " Automated tag file generation and syntax highlighting of tags in Vim
+" NeoBundle 'craigemery/vim-autotag' " 1.0   Updates entries in a tags file automatically when saving
+" NeoBundle 'szw/vim-tags'
+" NeoBundle 'OmniTags' " 0.1   This plugin can help you to maintenance tags file.
 
 " }}}
 
@@ -469,6 +570,12 @@ NeoBundle 'vimwiki/vimwiki' " Personal Wiki for Vim
 NeoBundle 'vim-scripts/obvious-resize' " Resize Vim windows in an obvious way.
 NeoBundle 'zhaocai/GoldenView.Vim' "Always have a nice view for vim split windows
 NeoBundle 't9md/vim-choosewin' " land to window you choose like tmux's 'display-pane'
+
+" }}}
+
+" Experimental {{{
+
+NeoBundle 'thinca/vim-portal' " Hello and, again, this is the Portal Gun for Vim.
 
 " }}}
 
@@ -555,6 +662,18 @@ let g:ctrlp_open_new_file = 'r'
 
 " }}}
 
+" EasyTags {{{
+
+let g:easytags_async = 1
+" let g:easytags_dynamic_files = 1
+let g:easytags_by_filetype = "~/.vim/tags/"
+" let g:easytags_syntax_keyword = 'always'
+" let g:easytags_on_cursorhold = 0
+let g:easytags_auto_highlight = 0
+
+
+" }}}
+
 " Jedi {{{
 
 let g:jedi#popup_on_dot = 0
@@ -601,7 +720,7 @@ let NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
 let NERDTreeShowBookmarks=1
 let g:nerdtree_tabs_focus_on_files=1
 let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
-let g:NERDTreeWinSize = 20
+let g:NERDTreeWinSize = 40
 
 " }}}
 
@@ -648,6 +767,20 @@ let g:syntastic_aggregate_errors = 1
 let g:syntastic_phpcs_conf = "--standard=/home/gold/dev/dg/phpcs/CodeSniffer/Standards/dg/ruleset.xml"
 let g:syntastic_python_checkers=['python', 'pylint']
 
+"Syntastic
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_mode_map = { 'mode': 'passive',
+"                                \ 'passive_filetypes': ['groovy'] }
+"                                "\ 'active_filetypes': ['javascript', 'html', 'css'],
+
+" let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-", "invalid value \"{{"]
+
+let g:syntastic_groovy_checkers = ['codenarc']
+
+" "map <Leader>c :SyntasticCheck<CR>
+
+" let g:syntastic_always_populate_loc_list=1
+
 " }}}
 
 " Tagbar {{{
@@ -677,8 +810,28 @@ let g:tagbar_type_ruby = {
     \ ]
 \ }
 
+let g:tagbar_type_groovy = {
+    \ 'ctagstype' : 'groovy',
+    \ 'kinds'     : [
+        \ 'p:packages:0:1',
+        \ 'I:imports:1:1',
+        \ 'g:enums:0:1',
+        \ 'i:interfaces:0:1',
+        \ 'c:classes:0:1',
+        \ 'C:constructors:0:1',
+        \ 'f:functions:0:1',
+        \ 'm:member variables:0:1',
+        \ 'v:variables:0:1',
+    \ ],
+    \ 'sro'        : '.'
+\ }
 
 
+" }}}
+
+" Tags {{{
+
+let g:vim_tags_auto_generate = 1
 
 " }}}
 
@@ -858,8 +1011,11 @@ set complete=.,w,b,u,k,s,t,i
 
 " }}}
 
-" Conceal {{{
-set concealcursor=nvc
+" Conceal Mode {{{
+
+set concealcursor=nv
+set conceallevel=2
+
 " }}}
 
 " Dictionary {{{
@@ -944,7 +1100,10 @@ set colorcolumn=81,133
 " }}}
 
 " Tags {{{
-set tags="./tags,~/.vim/tags/
+
+"set tags="./tags,~/.vim/tags/
+set tags=./tags,tags,~/.vim/tags/tags
+
 " }}}
 
 " Timeouts {{{
@@ -1010,9 +1169,13 @@ set wildignore+=lib
 
 " }}}
 
+let g:EclimCompletionMethod = 'omnifunc'
+
 " }}}
 
 " Key Mapping {{{
+
+nnoremap <LocalLeader><Space> <PageDown>
 
 " F Keys {{{
 "
@@ -1165,6 +1328,12 @@ augroup END
 
 " }}}
 
+" Groovy {{{
+
+autocmd FileType groovy setlocal iskeyword-=.
+
+" }}}
+
 " Hive files {{{
 
 au BufRead,BufWrite *.hive set filetype=hive
@@ -1181,6 +1350,14 @@ au BufNewFile,BufRead *.ni      setf inform7
 " LUA {{{
 
 au BufRead,BufNewFile rc.lua setlocal foldmethod=marker
+
+" }}}
+
+" Makefiles {{{
+
+augroup filetypedetect
+    au BufNewFile,BufRead Makefile* set filetype=make syntax=make
+augroup END
 
 " }}}
 
@@ -1308,6 +1485,342 @@ nnoremap <silent><LocalLeader>t :Unite -silent -vertical -winwidth=40
 
 " }}}
 
+" Menus {{{
+
+" bookmarks menu {{{
+let g:unite_source_menu_menus.bookmarks = {
+    \ 'description' : '      bookmarks
+        \                                             ⌘ [space]m',
+    \}
+let g:unite_source_menu_menus.bookmarks.command_candidates = [
+    \['▷ open bookmarks',
+        \'Unite bookmark:*'],
+    \['▷ add bookmark',
+        \'UniteBookmarkAdd'],
+    \]
+nnoremap <silent>[menu]m :Unite -silent menu:bookmarks<CR>
+" }}}
+
+" buffer internal searching menu {{{
+let g:unite_source_menu_menus.searching = {
+    \ 'description' : '      searchs inside the current buffer
+        \                     ⌘ [space]f',
+    \}
+let g:unite_source_menu_menus.searching.command_candidates = [
+    \['▷ search line                                                ⌘ ,f',
+        \'Unite -auto-preview -start-insert line'],
+    \['▷ search word under the cursor                               ⌘ [space]8',
+        \'UniteWithCursorWord -no-split -auto-preview line'],
+    \['▷ search outlines & tags (ctags)                             ⌘ ,t',
+        \'Unite -vertical -winwidth=40 -direction=topleft -toggle outline'],
+    \['▷ search marks',
+        \'Unite -auto-preview mark'],
+    \['▷ search folds',
+        \'Unite -vertical -winwidth=30 -auto-highlight fold'],
+    \['▷ search changes',
+        \'Unite change'],
+    \['▷ search jumps',
+        \'Unite jump'],
+    \['▷ search undos',
+        \'Unite undo'],
+    \['▷ search tasks                                               ⌘ ,;',
+        \'Unite -toggle grep:%::FIXME|TODO|NOTE|XXX|COMBAK|@todo'],
+    \]
+nnoremap <silent>[menu]f :Unite -silent menu:searching<CR>
+" }}}
+
+" buffers, tabs & windows menu {{{
+let g:unite_source_menu_menus.navigation = {
+    \ 'description' : '     navigate by buffers, tabs & windows
+        \                   ⌘ [space]b',
+    \}
+let g:unite_source_menu_menus.navigation.command_candidates = [
+    \['▷ buffers                                                    ⌘ ,b',
+        \'Unite buffer'],
+    \['▷ tabs                                                       ⌘ ,B',
+        \'Unite tab'],
+    \['▷ windows',
+        \'Unite window'],
+    \['▷ location list',
+        \'Unite location_list'],
+    \['▷ quickfix',
+        \'Unite quickfix'],
+    \['▷ resize windows                                             ⌘ C-C C-W',
+        \'WinResizerStartResize'],
+    \['▷ new vertical window                                        ⌘ ,v',
+        \'vsplit'],
+    \['▷ new horizontal window                                      ⌘ ,h',
+        \'split'],
+    \['▷ close current window                                       ⌘ ,k',
+        \'close'],
+    \['▷ toggle quickfix window                                     ⌘ ,q',
+        \'normal ,q'],
+    \['▷ zoom                                                       ⌘ ,z',
+        \'ZoomWinTabToggle'],
+    \['▷ delete buffer                                              ⌘ ,K',
+        \'bd'],
+    \]
+nnoremap <silent>[menu]b :Unite -silent menu:navigation<CR>
+" }}}
+
+" code menu {{{
+
+let g:unite_source_menu_menus.code = {
+    \ 'description' : '           code tools
+        \                                            ⌘ [space]p',
+    \}
+let g:unite_source_menu_menus.code.command_candidates = [
+    \['▷ run python code                            (pymode)        ⌘ ,r',
+        \'Pyrun'],
+    \['▷ show docs for the current word             (pymode)        ⌘ K',
+        \'normal K'],
+    \['▷ insert a breakpoint                        (pymode)        ⌘ ,B',
+        \'normal ,B'],
+    \['▷ togle pylint revison                       (pymode)',
+        \'PyLintToggle'],
+    \['▷ run with python2 in tmux panel             (vimux)         ⌘ ,rr',
+        \'normal ,rr'],
+    \['▷ run with python3 in tmux panel             (vimux)         ⌘ ,r3',
+        \'normal ,r3'],
+    \['▷ run with python2 & time in tmux panel      (vimux)         ⌘ ,rt',
+        \'normal ,rt'],
+    \['▷ run with pypy & time in tmux panel         (vimux)         ⌘ ,rp',
+        \'normal ,rp'],
+    \['▷ command prompt to run in a tmux panel      (vimux)         ⌘ ,rc',
+        \'VimuxPromptCommand'],
+    \['▷ repeat last command                        (vimux)         ⌘ ,rl',
+        \'VimuxRunLastCommand'],
+    \['▷ stop command execution in tmux panel       (vimux)         ⌘ ,rs',
+        \'VimuxInterruptRunner'],
+    \['▷ inspect tmux panel                         (vimux)         ⌘ ,ri',
+        \'VimuxInspectRunner'],
+    \['▷ close tmux panel                           (vimux)         ⌘ ,rq',
+        \'VimuxCloseRunner'],
+    \['▷ rope autocompletion                        (rope)          ⌘ C-[espacio]',
+        \'RopeCodeAssist'],
+    \['▷ go to definition                           (rope)          ⌘ C-C g',
+        \'RopeGotoDefinition'],
+    \['▷ reorganize imports                         (rope)          ⌘ C-C r o',
+        \'RopeOrganizeImports'],
+    \['▷ refactorize - rename                       (rope)          ⌘ C-C r r',
+        \'RopeRename'],
+    \['▷ refactorize - extract variable             (rope)          ⌘ C-C r l',
+        \'RopeExtractVariable'],
+    \['▷ refactorize - extract method               (rope)          ⌘ C-C r m',
+        \'RopeExtractMethod'],
+    \['▷ refactorize - inline                       (rope)          ⌘ C-C r i',
+        \'RopeInline'],
+    \['▷ refactorize - move                         (rope)          ⌘ C-C r v',
+        \'RopeMove'],
+    \['▷ refactorize - restructure                  (rope)          ⌘ C-C r x',
+        \'RopeRestructure'],
+    \['▷ refactorize - use function                 (rope)          ⌘ C-C r u',
+        \'RopeUseFunction'],
+    \['▷ refactorize - introduce factory            (rope)          ⌘ C-C r f',
+        \'RopeIntroduceFactory'],
+    \['▷ refactorize - change signature             (rope)          ⌘ C-C r s',
+        \'RopeChangeSignature'],
+    \['▷ refactorize - rename current module        (rope)          ⌘ C-C r 1 r',
+        \'RopeRenameCurrentModule'],
+    \['▷ refactorize - move current module          (rope)          ⌘ C-C r 1 m',
+        \'RopeMoveCurrentModule'],
+    \['▷ refactorize - module to package            (rope)          ⌘ C-C r 1 p',
+        \'RopeModuleToPackage'],
+    \['▷ show docs for current word                 (rope)          ⌘ C-C r a d',
+        \'RopeShowDoc'],
+    \['▷ syntastic check                            (syntastic)',
+        \'SyntasticCheck'],
+    \['▷ syntastic errors                           (syntastic)',
+        \'Errors'],
+    \['▷ list virtualenvs                           (virtualenv)',
+        \'Unite output:VirtualEnvList'],
+    \['▷ activate virtualenv                        (virtualenv)',
+        \'VirtualEnvActivate'],
+    \['▷ deactivate virtualenv                      (virtualenv)',
+        \'VirtualEnvDeactivate'],
+    \['▷ run coverage2                              (coveragepy)',
+        \'call system("coverage2 run ".bufname("%")) | Coveragepy report'],
+    \['▷ run coverage3                              (coveragepy)',
+        \'call system("coverage3 run ".bufname("%")) | Coveragepy report'],
+    \['▷ toggle coverage report                     (coveragepy)',
+        \'Coveragepy session'],
+    \['▷ toggle coverage marks                      (coveragepy)',
+        \'Coveragepy show'],
+    \['▷ count lines of code',
+        \'Unite -default-action= output:call\\ LinesOfCode()'],
+    \['▷ toggle indent lines                                        ⌘ ,L',
+        \'IndentLinesToggle'],
+    \]
+nnoremap <silent>[menu]p :Unite -silent -winheight=42 menu:code<CR>
+" }}}
+
+" files and dirs menu {{{
+let g:unite_source_menu_menus.files = {
+    \ 'description' : '          files & dirs
+        \                                          ⌘ [space]o',
+    \}
+let g:unite_source_menu_menus.files.command_candidates = [
+    \['▷ open file                                                  ⌘ ,o',
+        \'Unite -start-insert file'],
+    \['▷ open more recently used files                              ⌘ ,m',
+        \'Unite file_mru'],
+    \['▷ open file with recursive search                            ⌘ ,O',
+        \'Unite -start-insert file_rec/async'],
+    \['▷ edit new file',
+        \'Unite file/new'],
+    \['▷ search directory',
+        \'Unite directory'],
+    \['▷ search recently used directories',
+        \'Unite directory_mru'],
+    \['▷ search directory with recursive search',
+        \'Unite directory_rec/async'],
+    \['▷ make new directory',
+        \'Unite directory/new'],
+    \['▷ change working directory',
+        \'Unite -default-action=lcd directory'],
+    \['▷ know current working directory',
+        \'Unite output:pwd'],
+    \['▷ junk files                                                 ⌘ ,d',
+        \'Unite junkfile/new junkfile'],
+    \['▷ save as root                                               ⌘ :w!!',
+        \'exe "write !sudo tee % >/dev/null"'],
+    \['▷ quick save                                                 ⌘ ,w',
+        \'normal ,w'],
+    \['▷ open ranger                                                ⌘ ,x',
+        \'call RangerChooser()'],
+    \['▷ open vimfiler                                              ⌘ ,X',
+        \'VimFiler'],
+    \]
+nnoremap <silent>[menu]o :Unite -silent -winheight=17 -start-insert
+            \ menu:files<CR>
+" }}}
+
+" File Searching Menu {{{
+
+let g:unite_source_menu_menus.grep = {
+    \ 'description' : '           search files
+        \                                          ⌘ [space]a',
+    \}
+let g:unite_source_menu_menus.grep.command_candidates = [
+    \['▷ grep (ag → ack → grep)                                     ⌘ ,a',
+        \'Unite -no-quit grep'],
+    \['▷ find',
+        \'Unite find'],
+    \['▷ locate',
+        \'Unite -start-insert locate'],
+    \['▷ vimgrep (very slow)',
+        \'Unite vimgrep'],
+    \]
+nnoremap <silent>[menu]a :Unite -silent menu:grep<CR>
+
+" }}}
+
+" General Stuff {{{
+
+let g:unite_source_menu_menus.general = {
+    \ 'description' : '           general stuff
+        \                                            ⌘ z',
+    \}
+let g:unite_source_menu_menus.general.command_candidates = [
+    \['▷ Buffers                                                    ⌘ b',
+        \'Unite -silent buffer'],
+    \['▷ Buffer Search                                              ⌘ 8',
+        \'Unite -silent -no-slit -auto-preview line'],
+    \['▷ Build',
+        \'Unite -silent build'],
+    \['▷ Colorscheme',
+        \'Unite colorscheme'],
+    \['▷ Grep                                                       ⌘ a',
+        \'Unite -silent -no-quit grep'],
+    \['▷ Help',
+        \'UniteWithCursorWord -silent help'],
+    \['▷ MRU                                                        ⌘ m',
+        \'Unite -silent file_mru'],
+    \['▷ Tabs                                                       ⌘ B',
+        \'Unite -silent tab'],
+    \['▷ Tags                                               ',
+        \'Unite -silent -vertical -winwidth=40 -direction=topleft -toggle outline'],
+    \['▷ Tasks                                                      ⌘ ;',
+        \'Unite -silent -toggle grep:%::FIXME\|TODO\|NOTE\|XXX\|COMBAK\|@todo'],
+    \['▷ Yankring                                                   ⌘ i',
+        \'Unite -silent history/yank'],
+    \]
+nnoremap <silent>[menu]z :Unite -silent -winheight=42 menu:general<CR>
+
+" }}}
+
+" git menu {{{
+let g:unite_source_menu_menus.git = {
+    \ 'description' : '            admin git repositories
+        \                                ⌘ [space]g',
+    \}
+let g:unite_source_menu_menus.git.command_candidates = [
+    \['▷ tig                                                        ⌘ ,gt',
+        \'normal ,gt'],
+    \['▷ git viewer             (gitv)                              ⌘ ,gv',
+        \'normal ,gv'],
+    \['▷ git viewer - buffer    (gitv)                              ⌘ ,gV',
+        \'normal ,gV'],
+    \['▷ git status             (fugitive)                          ⌘ ,gs',
+        \'Gstatus'],
+    \['▷ git diff               (fugitive)                          ⌘ ,gd',
+        \'Gdiff'],
+    \['▷ git commit             (fugitive)                          ⌘ ,gc',
+        \'Gcommit'],
+    \['▷ git log                (fugitive)                          ⌘ ,gl',
+        \'exe "silent Glog | Unite -no-quit quickfix"'],
+    \['▷ git log - all          (fugitive)                          ⌘ ,gL',
+        \'exe "silent Glog -all | Unite -no-quit quickfix"'],
+    \['▷ git blame              (fugitive)                          ⌘ ,gb',
+        \'Gblame'],
+    \['▷ git add/stage          (fugitive)                          ⌘ ,gw',
+        \'Gwrite'],
+    \['▷ git checkout           (fugitive)                          ⌘ ,go',
+        \'Gread'],
+    \['▷ git rm                 (fugitive)                          ⌘ ,gR',
+        \'Gremove'],
+    \['▷ git mv                 (fugitive)                          ⌘ ,gm',
+        \'exe "Gmove " input("destino: ")'],
+    \['▷ git push               (fugitive, buffer output)           ⌘ ,gp',
+        \'Git! push'],
+    \['▷ git pull               (fugitive, buffer output)           ⌘ ,gP',
+        \'Git! pull'],
+    \['▷ git command            (fugitive, buffer output)           ⌘ ,gi',
+        \'exe "Git! " input("comando git: ")'],
+    \['▷ git edit               (fugitive)                          ⌘ ,gE',
+        \'exe "command Gedit " input(":Gedit ")'],
+    \['▷ git grep               (fugitive)                          ⌘ ,gg',
+        \'exe "silent Ggrep -i ".input("Pattern: ") | Unite -no-quit quickfix'],
+    \['▷ git grep - messages    (fugitive)                          ⌘ ,ggm',
+        \'exe "silent Glog --grep=".input("Pattern: ")." | Unite -no-quit quickfix"'],
+    \['▷ git grep - text        (fugitive)                          ⌘ ,ggt',
+        \'exe "silent Glog -S".input("Pattern: ")." | Unite -no-quit quickfix"'],
+    \['▷ git init                                                   ⌘ ,gn',
+        \'Unite output:echo\ system("git\ init")'],
+    \['▷ git cd                 (fugitive)',
+        \'Gcd'],
+    \['▷ git lcd                (fugitive)',
+        \'Glcd'],
+    \['▷ git browse             (fugitive)                          ⌘ ,gB',
+        \'Gbrowse'],
+    \]
+nnoremap <silent>[menu]g :Unite -silent -winheight=26 -start-insert menu:git<CR>
+" }}}
+
+" markdown menu {{{
+let g:unite_source_menu_menus.markdown = {
+    \ 'description' : '       preview markdown extra docs
+        \                           ⌘ [space]k',
+    \}
+let g:unite_source_menu_menus.markdown.command_candidates = [
+    \['▷ preview',
+        \'Me'],
+    \['▷ refresh',
+        \'Mer'],
+    \]
+nnoremap <silent>[menu]k :Unite -silent menu:markdown<CR>
+" }}}
+
 " neobundle menu {{{
 
 let g:unite_source_menu_menus.neobundle = {
@@ -1342,12 +1855,29 @@ nnoremap <silent>[menu]n :Unite -silent -start-insert menu:neobundle<CR>
 
 " }}}
 
+" sessions menu {{{
+let g:unite_source_menu_menus.sessions = {
+    \ 'description' : '       sessions
+        \                                              ⌘ [space]h',
+    \}
+let g:unite_source_menu_menus.sessions.command_candidates = [
+    \['▷ load session',
+        \'Unite session'],
+    \['▷ make session (default)',
+        \'UniteSessionSave'],
+    \['▷ make session (custom)',
+        \'exe "UniteSessionSave " input("name: ")'],
+    \]
+nnoremap <silent>[menu]h :Unite -silent menu:sessions<CR>
+" }}}
+
 " spelling menu {{{
 
 let g:unite_source_menu_menus.spelling = {
     \ 'description' : '       spell checking
         \                                        ⌘ \s',
     \}
+
 let g:unite_source_menu_menus.spelling.command_candidates = [
     \['▷ spell checking in Spanish                                  ⌘ \ss',
         \'setlocal spell spelllang=es'],
@@ -1368,6 +1898,72 @@ nnoremap <silent>[menu]s :Unite -silent menu:spelling<CR>
 
 " }}}
 
+" text editing menu {{{
+let g:unite_source_menu_menus.text = {
+    \ 'description' : '           text editing
+        \                                          ⌘ [space]e',
+    \}
+let g:unite_source_menu_menus.text.command_candidates = [
+    \['▷ toggle search results highlight                            ⌘ ,eq',
+        \'set invhlsearch'],
+    \['▷ toggle line numbers                                        ⌘ ,l',
+        \'call ToggleRelativeAbsoluteNumber()'],
+    \['▷ toggle wrapping                                            ⌘ ,ew',
+        \'call ToggleWrap()'],
+    \['▷ show hidden chars                                          ⌘ ,eh',
+        \'set list!'],
+    \['▷ toggle fold                                                ⌘ /',
+        \'normal za'],
+    \['▷ open all folds                                             ⌘ zR',
+        \'normal zR'],
+    \['▷ close all folds                                            ⌘ zM',
+        \'normal zM'],
+    \['▷ copy to the clipboard                                      ⌘ ,y',
+        \'normal ,y'],
+    \['▷ paste from the clipboard                                   ⌘ ,p',
+        \'normal ,p'],
+    \['▷ toggle paste mode                                          ⌘ ,P',
+        \'normal ,P'],
+    \['▷ remove trailing whitespaces                                ⌘ ,et',
+        \'normal ,et'],
+    \['▷ text statistics                                            ⌘ ,es',
+        \'Unite output:normal\ ,es -no-cursor-line'],
+    \['▷ show word frequency                                        ⌘ ,ef',
+        \'Unite output:WordFrequency'],
+    \['▷ show available digraphs',
+        \'digraphs'],
+    \['▷ insert lorem ipsum text',
+        \'exe "Loremipsum" input("numero de palabras: ")'],
+    \['▷ show current char info                                     ⌘ ga',
+        \'normal ga'],
+    \]
+nnoremap <silent>[menu]e :Unite -silent -winheight=20 menu:text <CR>
+" }}}
+
+" yanks, registers & history menu {{{
+let g:unite_source_menu_menus.registers = {
+    \ 'description' : '      yanks, registers & history
+        \                            ⌘ [space]i',
+    \}
+let g:unite_source_menu_menus.registers.command_candidates = [
+    \['▷ yanks                                                      ⌘ ,i',
+        \'Unite history/yank'],
+    \['▷ commands       (history)                                   ⌘ q:',
+        \'Unite history/command'],
+    \['▷ searches       (history)                                   ⌘ q/',
+        \'Unite history/search'],
+    \['▷ registers',
+        \'Unite register'],
+    \['▷ messages',
+        \'Unite output:messages'],
+    \['▷ undo tree      (gundo)                                     ⌘ ,u',
+        \'GundoToggle'],
+    \]
+nnoremap <silent>[menu]i :Unite -silent menu:registers<CR>
+" }}}
+
+" }}}
+
 " }}}
 
 " Startup {{{ =================================================================
@@ -1378,6 +1974,7 @@ autocmd VimEnter *
             \   NERDTree |
             \   execute "normal \<c-w>w" |
             \ endif
+
 " }}}
 
 " Events {{{ ==================================================================
