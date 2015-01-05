@@ -308,7 +308,7 @@ NeoBundle 'vim-scripts/java_getset.vim' " Automatically add getter/setters for J
 "
 NeoBundle 'vim-scripts/groovyindent' " groovy indent script
 NeoBundle 'vim-scripts/groovy.vim--Ruley' " Runs or compiles Groovy scripts.
-NeoBundle 'rdolgushin/groovy.vim' " Fixed Groovy syntax plugin for Vim 7.4
+"  NeoBundle 'rdolgushin/groovy.vim' " Fixed Groovy syntax plugin for Vim 7.4
 
 " }}} 
 
@@ -399,6 +399,13 @@ NeoBundle 'kana/vim-textobj-user'
 " Marks {{{ 
 
 NeoBundle 'kshenoy/vim-signature'
+
+" }}} 
+
+" Maven Stuff {{{ 
+
+" NeoBundle 'vim-scripts/maven-ide' " maven-ide plugin 
+NeoBundle 'mikelue/vim-maven-plugin' " The Maven plugin for VIM
 
 " }}} 
 
@@ -576,6 +583,10 @@ NeoBundle 't9md/vim-choosewin' " land to window you choose like tmux's 'display-
 " Experimental {{{ 
 
 NeoBundle 'thinca/vim-portal' " Hello and, again, this is the Portal Gun for Vim.
+" NeoBundle 'vim-scripts/project.tar.gz' " Organize/Navigate projects of files (like IDE/buffer explorer)
+" NeoBundle 'yavdb' " 0.1   Yet Another (Generic) Vim Debugger Integration
+" NeoBundle 'idbrii/AsyncCommand' 
+" NeoBundle 'Vim-JDE' " 2.00.11 Vim - Just a Development Envirement (Java/C++)
 
 " }}} 
 
@@ -1334,6 +1345,15 @@ augroup END
 " Groovy {{{ 
 
 autocmd FileType groovy setlocal iskeyword-=.
+au BufNewFile,BufRead *.groovy  setf groovy
+"  if did_filetype()
+"    finish
+"  endif
+"  if getline(1) =~ '^#!.*[/\\]groovy\>'
+"    setf groovy
+"  endif
+let g:groovy_minlines=1000
+
 
 " }}}
 
