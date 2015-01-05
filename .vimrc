@@ -284,16 +284,16 @@ NeoBundle 'elixir-lang/vim-elixir' " Vim configuration files for Elixir
 " Java {{{
 
 NeoBundle 'Better-Javascript-Indentation' " 1.0.0 Vastly improved javascript indentation
-NeoBundle 'java.vim' " 1.0   Convenience mappings for Java programming
+"NeoBundle 'java.vim' " 1.0   Convenience mappings for Java programming
 NeoBundle 'java_apidoc.vim' " 1.0   Java API documentation viewer (JavaDoc)
 NeoBundle 'javacomplete' " 0.71  Omni Completion for JAVA
-NeoBundle 'javaimp.vim' " 0.1   Open a Java source file from its import statement
+"NeoBundle 'javaimp.vim' " 0.1   Open a Java source file from its import statement
 NeoBundle 'vim-scripts/javalog.vim' " syntax highlighting for default java.util.logging output
-NeoBundle 'mbedna/vjava' " Vim plugin used to compile java code based on syntastic.
-NeoBundle 'JavaBrowser' " 1.11  Shows java file class, package in a tree as in IDEs. Java source browser.
-NeoBundle 'InsertTry.vim' " 0.1   put java's try catch around marked lines
-NeoBundle 'java_fold' " 1.0   Folding expression for Java
-NeoBundle 'vim-scripts/java_getset.vim' " Automatically add getter/setters for Java properties (including array-based)
+"NeoBundle 'mbedna/vjava' " Vim plugin used to compile java code based on syntastic.
+"NeoBundle 'JavaBrowser' " 1.11  Shows java file class, package in a tree as in IDEs. Java source browser.
+"NeoBundle 'InsertTry.vim' " 0.1   put java's try catch around marked lines
+"NeoBundle 'java_fold' " 1.0   Folding expression for Java
+"NeoBundle 'vim-scripts/java_getset.vim' " Automatically add getter/setters for Java properties (including array-based)
 
 " }}}
 
@@ -590,6 +590,15 @@ NeoBundle 'thinca/vim-portal' " Hello and, again, this is the Portal Gun for Vim
 
 " }}}
 
+" ME {{{
+
+NeoBundle 'd-gold/vim-cute-java' 
+NeoBundle 'd-gold/vim-cute-groovy' 
+NeoBundle 'd-gold/vim-java-syntax' 
+NeoBundle 'd-gold/groovy.vim' 
+
+" }}}
+
 " END BUNDLES }}}
 
 " Auto install the plugins {{{
@@ -710,6 +719,12 @@ map <silent> <Leader>L :IndentLinesToggle<CR>
 let g:indentLine_enabled = 0
 let g:indentLine_char = '┊'
 let g:indentLine_color_term = 239
+
+" }}}
+
+" Maths Mode {{{ 
+
+map <Leader>m :call ToggleMaths()<CR>
 
 " }}}
 
@@ -942,6 +957,23 @@ function! ToggleRelativeAbsoluteNumber()
 endfunction
 
 " }}}
+
+" Toggle Maths Mode {{{
+
+function! ToggleMaths() 
+    if &conceallevel == 0
+        set concealcursor=nv 
+        set conceallevel=2
+        "hi! Conceal ctermbg=Black ctermfg=LightGreen
+        hi! Conceal ctermfg=LightGreen
+    else 
+        set conceallevel=0
+    endif
+        
+endfunction
+
+" }}}
+
 
 " }}}
 
