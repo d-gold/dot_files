@@ -77,11 +77,11 @@ NeoBundle 'bufexplorer.zip' " 6.0.2 Buffer Explorer / Browser
 
 " }}}
 
-" Calendar {{{ 
+" Calendar {{{
 
 NeoBundle 'itchyny/calendar.vim' " A calendar application for Vim
 
-" }}} 
+" }}}
 
 " Colorschemes {{{
 
@@ -263,11 +263,11 @@ NeoBundle 'vim-scripts/c.vim'
 
 " }}}
 
-" Chef {{{ 
+" Chef {{{
 
 NeoBundle 'vadv/vim-chef' " Vim plugins for chef
 
-" }}} 
+" }}}
 
 " CSV {{{
 
@@ -275,7 +275,7 @@ NeoBundle 'vim-scripts/csv.vim' " A Filetype plugin for csv files.
 
 " }}}
 
-" Elixir {{{ 
+" Elixir {{{
 
 NeoBundle 'elixir-lang/vim-elixir' " Vim configuration files for Elixir
 
@@ -295,7 +295,7 @@ NeoBundle 'InsertTry.vim' " 0.1   put java's try catch around marked lines
 NeoBundle 'java_fold' " 1.0   Folding expression for Java
 NeoBundle 'vim-scripts/java_getset.vim' " Automatically add getter/setters for Java properties (including array-based)
 
-" }}} 
+" }}}
 
 " Go {{{
 
@@ -310,7 +310,7 @@ NeoBundle 'vim-scripts/groovyindent' " groovy indent script
 NeoBundle 'vim-scripts/groovy.vim--Ruley' " Runs or compiles Groovy scripts.
 "  NeoBundle 'rdolgushin/groovy.vim' " Fixed Groovy syntax plugin for Vim 7.4
 
-" }}} 
+" }}}
 
 " Haskell {{{
 
@@ -337,11 +337,11 @@ NeoBundle 'vim-scripts/slimv.vim'
 
 " }}}
 
-" Markup/down {{{ 
+" Markup/down {{{
 
 NeoBundle 'confluencewiki.vim' " 0.0.1 Confluence WIKI syntax
 "NeoBundle 'gabrielelana/vim-markdown' " Markdown for Vim: a complete environment to create Markdown files with a syntax highlight that don't sucks!
-"NeoBundle 'hallison/vim-markdown' 
+"NeoBundle 'hallison/vim-markdown'
 NeoBundle 'tpope/vim-markdown' " Vim Markdown runtime files
 NeoBundle 'nelstrom/vim-markdown-folding' " Fold markdown documents by section.
 
@@ -396,11 +396,11 @@ NeoBundle 'kana/vim-textobj-user'
 
 " }}}
 
-" Marks {{{ 
+" Marks {{{
 
 NeoBundle 'kshenoy/vim-signature'
 
-" }}} 
+" }}}
 
 " Maven Stuff {{{ 
 
@@ -464,7 +464,7 @@ NeoBundle 'terryma/vim-multiple-cursors'
 
 " NeoBundle 'operator-camelize' " 0.0.0 snake_case -> SnakeCase, CamelCase -> camel_case
 
-" }}} 
+" }}}
 
 " Outlining {{{
 
@@ -580,7 +580,7 @@ NeoBundle 't9md/vim-choosewin' " land to window you choose like tmux's 'display-
 
 " }}}
 
-" Experimental {{{ 
+" Experimental {{{
 
 NeoBundle 'thinca/vim-portal' " Hello and, again, this is the Portal Gun for Vim.
 " NeoBundle 'vim-scripts/project.tar.gz' " Organize/Navigate projects of files (like IDE/buffer explorer)
@@ -588,7 +588,7 @@ NeoBundle 'thinca/vim-portal' " Hello and, again, this is the Portal Gun for Vim
 " NeoBundle 'idbrii/AsyncCommand' 
 " NeoBundle 'Vim-JDE' " 2.00.11 Vim - Just a Development Envirement (Java/C++)
 
-" }}} 
+" }}}
 
 " END BUNDLES }}}
 
@@ -683,7 +683,7 @@ let g:easytags_by_filetype = "~/.vim/tags/"
 let g:easytags_auto_highlight = 0
 
 
-" }}} 
+" }}}
 
 " Jedi {{{
 
@@ -792,9 +792,6 @@ let g:syntastic_groovy_checkers = ['codenarc']
 
 " let g:syntastic_always_populate_loc_list=1
 
-
-
-
 " }}}
 
 " Tagbar {{{
@@ -843,11 +840,11 @@ let g:tagbar_type_groovy = {
 
 " }}}
 
-" Tags {{{ 
+" Tags {{{
 
 let g:vim_tags_auto_generate = 1
 
-" }}} 
+" }}}
 
 " UtilSnips {{{
 
@@ -1025,10 +1022,10 @@ set complete=.,w,b,u,k,s,t,i
 
 " }}}
 
-" Conceal Mode {{{ 
+" Conceal Mode {{{
 
-set concealcursor=nv 
-set conceallevel=2 
+set concealcursor=nv
+set conceallevel=2
 
 " }}}
 
@@ -1342,7 +1339,7 @@ augroup END
 
 " }}}
 
-" Groovy {{{ 
+" Groovy {{{
 
 autocmd FileType groovy setlocal iskeyword-=.
 au BufNewFile,BufRead *.groovy  setf groovy
@@ -1376,13 +1373,13 @@ au BufRead,BufNewFile rc.lua setlocal foldmethod=marker
 
 " }}}
 
-" Makefiles {{{ 
+" Makefiles {{{
 
 augroup filetypedetect
     au BufNewFile,BufRead Makefile* set filetype=make syntax=make
 augroup END
 
-" }}} 
+" }}}
 
 " MARKDOWN {{{
 
@@ -1397,6 +1394,7 @@ autocmd FileType markdown NeoBundleSource vim-markdown-extra-preview
 
 augroup filetypedetect
     au BufNewFile,BufRead *.pig set filetype=pig syntax=pig
+    au BufNewFile,BufRead Makefile* set filetype=make syntax=make
 augroup END
 
 " }}}
@@ -1507,7 +1505,7 @@ nnoremap <silent><LocalLeader>t :Unite -silent -vertical -winwidth=40
 
 " }}}
 
-" Menus {{{ 
+" Menus {{{
 
 " bookmarks menu {{{
 let g:unite_source_menu_menus.bookmarks = {
@@ -1717,7 +1715,7 @@ nnoremap <silent>[menu]o :Unite -silent -winheight=17 -start-insert
             \ menu:files<CR>
 " }}}
 
-" File Searching Menu {{{ 
+" File Searching Menu {{{
 
 let g:unite_source_menu_menus.grep = {
     \ 'description' : '           search files
@@ -1740,7 +1738,7 @@ nnoremap <silent>[menu]a :Unite -silent menu:grep<CR>
 " General Stuff {{{
 
 let g:unite_source_menu_menus.general = {
-    \ 'description' : '           general stuff 
+    \ 'description' : '           general stuff
         \                                            ⌘ z',
     \}
 let g:unite_source_menu_menus.general.command_candidates = [
