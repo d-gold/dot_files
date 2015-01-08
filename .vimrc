@@ -297,6 +297,12 @@ NeoBundle 'vim-scripts/javalog.vim' " syntax highlighting for default java.util.
 
 " }}}
 
+" Javascript {{{ 
+
+"NeoBundle 'tyok/js-mask' 
+
+" }}} 
+
 " Go {{{
 
 " Temporarily commented out until I get around to setting up go.
@@ -594,6 +600,8 @@ NeoBundle 'thinca/vim-portal' " Hello and, again, this is the Portal Gun for Vim
 
 NeoBundle 'd-gold/vim-cute-java' 
 NeoBundle 'd-gold/vim-cute-groovy' 
+NeoBundle 'd-gold/vim-cute-ruby' 
+NeoBundle 'd-gold/vim-cute-javascript' 
 NeoBundle 'd-gold/vim-java-syntax' 
 NeoBundle 'd-gold/groovy.vim' 
 
@@ -725,6 +733,7 @@ let g:indentLine_color_term = 239
 " Maths Mode {{{ 
 
 map <Leader>m :call ToggleMaths()<CR>
+map <Leader>M :call SetMaths()<CR>
 
 " }}}
 
@@ -962,14 +971,20 @@ endfunction
 
 function! ToggleMaths() 
     if &conceallevel == 0
-        set concealcursor=nv 
-        set conceallevel=2
+        setlocal concealcursor=nv 
+        setlocal conceallevel=2
         "hi! Conceal ctermbg=Black ctermfg=LightGreen
         hi! Conceal ctermfg=LightGreen
     else 
         set conceallevel=0
     endif
-        
+endfunction
+
+function! SetMaths() 
+    setlocal concealcursor=nv 
+    setlocal conceallevel=2
+    "hi! Conceal ctermbg=Black ctermfg=LightGreen
+    hi! Conceal ctermfg=LightGreen
 endfunction
 
 " }}}
