@@ -77,6 +77,12 @@ NeoBundle 'bufexplorer.zip' " 6.0.2 Buffer Explorer / Browser
 
 " }}}
 
+" Buffers {{{ 
+
+NeoBundle 'moll/vim-bbye'
+
+" }}}
+
 " Calendar {{{
 
 NeoBundle 'itchyny/calendar.vim' " A calendar application for Vim
@@ -246,6 +252,14 @@ NeoBundle 'tpope/vim-commentary'
 
 " }}}
 
+" Formatting {{{ 
+
+NeoBundle 'vim-scripts/Align'
+NeoBundle 'godlygeek/tabular'
+NeoBundle 'michaeljsmith/vim-indent-object'
+
+" }}} 
+
 " Languages {{{
 
 " On Demand support for a lot of languages
@@ -297,6 +311,10 @@ NeoBundle 'vim-scripts/javalog.vim' " syntax highlighting for default java.util.
 
 " }}}
 
+" Erlang {{{
+
+" }}}
+
 " Javascript {{{ 
 
 "NeoBundle 'tyok/js-mask' 
@@ -325,6 +343,10 @@ NeoBundle 'vim-scripts/haskellFold' " Provide a foldexpr function which give nic
 NeoBundle 'vim-scripts/indenthaskell.vim' " Haskell indent file
 NeoBundle 'aniederl/haskellmode-vim' " git mirror of http://code.haskell.org/haskellmode-vim
 NeoBundle 'enomsg/Vim-HaskellConcealPlus' " Conceal operator for haskell
+" NeobBundle 'eagletmt/ghcmod-vim' " Having fun getting ghc-mod to install...
+NeoBundle 'eagletmt/neco-ghc'
+NeoBundle 'Twinside/vim-hoogle'
+
 
 " }}}
 
@@ -522,6 +544,8 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundleLazy 'gregsexton/gitv', {'depends':['tpope/vim-fugitive'],
             \ 'autoload':{'commands':'Gitv'}}
 NeoBundle 'airblade/vim-gitgutter'
+NeoBundle 'vim-scripts/gitignore'
+NeoBundle 'int3/vim-extradite'
 
 " }}}
 
@@ -570,6 +594,13 @@ NeoBundle 'xolox/vim-easytags' " Automated tag file generation and syntax highli
 " NeoBundle 'OmniTags' " 0.1   This plugin can help you to maintenance tags file.
 
 " }}}
+
+" TMUX {{{ 
+
+NeoBundle 'brauner/vimtux'
+NeoBundle 'christoomey/vim-tmux-navigator'
+
+" }}} 
 
 " Undo {{{
 NeoBundleLazy 'sjl/gundo.vim', { 'autoload' : {'commands': 'GundoToggle'}}
@@ -721,6 +752,13 @@ let g:goldenview__enable_default_mapping = 0
 
 " }}}
 
+" Haskell Stuff {{{ 
+
+let g:haskell_conceal_wide = 1
+let g:haskell_conceal_enumerations = 1
+
+" }}}
+
 " Indent Lines {{{
 
 map <silent> <Leader>L :IndentLinesToggle<CR>
@@ -822,6 +860,7 @@ let g:syntastic_groovy_checkers = ['codenarc']
 
 let g:tagbar_autofocus = 1
 
+
 let g:tagbar_type_go = {
     \ 'ctagstype' : 'go',
     \ 'kinds'     : [  'p:package', 'i:imports:1', 'c:constants', 'v:variables',
@@ -861,6 +900,37 @@ let g:tagbar_type_groovy = {
     \ 'sro'        : '.'
 \ }
 
+let g:tagbar_type_haskell = {
+    \ 'ctagsbin'  : 'hasktags',
+    \ 'ctagsargs' : '-x -c -o-',
+    \ 'kinds'     : [
+        \  'm:modules:0:1',
+        \  'd:data: 0:1',
+        \  'd_gadt: data gadt:0:1',
+        \  't:type names:0:1',
+        \  'nt:new types:0:1',
+        \  'c:classes:0:1',
+        \  'cons:constructors:1:1',
+        \  'c_gadt:constructor gadt:1:1',
+        \  'c_a:constructor accessors:1:1',
+        \  'ft:function types:1:1',
+        \  'fi:function implementations:0:1',
+        \  'o:others:0:1'
+    \ ],
+    \ 'sro'        : '.',
+    \ 'kind2scope' : {
+        \ 'm' : 'module',
+        \ 'c' : 'class',
+        \ 'd' : 'data',
+        \ 't' : 'type'
+    \ },
+    \ 'scope2kind' : {
+        \ 'module' : 'm',
+        \ 'class'  : 'c',
+        \ 'data'   : 'd',
+        \ 'type'   : 't'
+    \ }
+\ }
 
 " }}}
 
@@ -989,7 +1059,6 @@ endfunction
 
 " }}}
 
-
 " }}}
 
 " VIM Setup {{{ ===============================================================
@@ -1029,6 +1098,7 @@ set autoread                    " update a open file edited outside of Vim
 set ttimeoutlen=0               " toggle between modes almost instantly
 set backspace=indent,eol,start  " defines the backspace key behavior
 set modeline
+" set magic
 
 " }}}
 
@@ -1093,6 +1163,28 @@ nnoremap <C-l> <C-w>l
 
 " }}}
 
+" Formatting {{{
+
+" Alignment {{{
+
+" Stop Align plugin from forcing its mappings on us
+let g:loaded_AlignMapsPlugin=1
+" Align on equal signs
+map <Leader>a= :Align =<CR>
+" Align on commas
+map <Leader>a, :Align ,<CR>
+" Align on pipes
+map <Leader>a<bar> :Align <bar><CR>
+" Prompt for align character
+map <leader>ap :Align
+
+" Enable some tabular presets for Haskell
+let g:haskell_tabular = 1
+
+" }}}
+
+" }}}
+
 " History and permanent undo levels {{{
 
 set history=5000
@@ -1126,6 +1218,38 @@ set mouse=a
 
 nnoremap <Leader>v <C-w>v
 nnoremap <Leader>h <C-w>s
+
+" Open window splits in various places
+nmap <leader>sh :leftabove  vnew<CR>
+nmap <leader>sl :rightbelow vnew<CR>
+nmap <leader>sk :leftabove  new<CR>
+nmap <leader>sj :rightbelow new<CR>
+
+" }}}
+
+" Searching {{{
+
+set incsearch                   " incremental searching
+set showmatch                   " show pairs match
+set hlsearch                    " highlight search results
+set smartcase                   " smart case ignore
+set smartindent                 " Turn on autoindenting of blocks
+set ignorecase                  " ignore case letters
+
+" }}}
+
+" Startup {{{
+
+" Return to last edit position when opening files (You want this!)
+augroup last_edit
+  autocmd!
+  autocmd BufReadPost *
+       \ if line("'\"") > 0 && line("'\"") <= line("$") |
+       \   exe "normal! g`\"" |
+       \ endif
+augroup END
+" Remember info about open buffers on close
+set viminfo^=%
 
 " }}}
 
@@ -1172,14 +1296,15 @@ set ttimeoutlen=10
 
 " }}}
 
-" Searching {{{
+" TMUX {{{
 
-set incsearch                   " incremental searching
-set showmatch                   " show pairs match
-set hlsearch                    " highlight search results
-set smartcase                   " smart case ignore
-set smartindent                 " Turn on autoindenting of blocks
-set ignorecase                  " ignore case letters
+" Manually create key mappings (to avoid rebinding C-\)
+let g:tmux_navigator_no_mappings = 1
+
+nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
 
 " }}}
 
@@ -1278,6 +1403,8 @@ vmap > >gv
 
 noremap <leader>j :bn<CR>
 noremap <leader>k :bp<CR>
+" delete buffer without closing pane
+noremap <leader>bd :Bd<cr>
 
 " }}}
 
@@ -1294,6 +1421,13 @@ noremap <leader>x :bd<CR>
 cmap w!! %!sudo tee > /dev/null %
 
 " }}}
+
+" Visual Mode stuff {{{
+
+vnoremap <silent> * :call VisualSelection('f', '')<CR>
+vnoremap <silent> # :call VisualSelection('b', '')<CR>
+
+" }}} 
 
 " Instant access to interesting files {{{
 
@@ -1400,6 +1534,26 @@ let g:groovy_minlines=1000
 
 
 " }}}
+
+" Haskell {{{
+
+augroup haskell
+    autocmd!
+    autocmd FileType haskell map <silent> <leader><cr> :noh<cr>:GhcModTypeClear<cr>:SyntasticReset<cr>
+    autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+augroup END
+
+function! Pointfree()
+  call setline('.', split(system('pointfree '.shellescape(join(getline(a:firstline, a:lastline), "\n"))), "\n"))
+endfunction
+vnoremap <silent> <leader>h. :call Pointfree()<CR>
+
+function! Pointful()
+  call setline('.', split(system('pointful '.shellescape(join(getline(a:firstline, a:lastline), "\n"))), "\n"))
+endfunction
+vnoremap <silent> <leader>h> :call Pointful()<CR>
+
+" }}} 
 
 " Hive files {{{
 
@@ -2069,9 +2223,18 @@ augroup line_return
 
 " }}}
 
+
+augroup whitespace
+  autocmd!
+  autocmd BufWrite *.hs :call StripTrailingWhitespaces()
+augroup END
+
 " Reload .vimrc on change {{{
 
-autocmd! BufWritePost vimrc source %
+augroup sourcing
+    autocmd!
+    autocmd! BufWritePost .vimrc source $MYVIMRC
+augroup END
 
 " }}}
 
